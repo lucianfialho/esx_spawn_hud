@@ -7,7 +7,14 @@
       <ul>
         <template v-for="(local, index) in locals">
           <li :key="index" >
-            <a @click.prevent="selectLocal(local)">{{local.label}}</a>
+            
+            <a @click.prevent="selectLocal(local)">
+              <b-icon
+                pack="fas"
+                :icon="local.icon"
+                size="is-medium">
+              </b-icon>
+            {{local.label}}</a>
           </li>
         </template>
       </ul>
@@ -64,15 +71,20 @@ export default {
             background: rgba($color: #000000, $alpha: 0.5);
             color: white;
             text-decoration: none;
-            padding: 2rem 3rem;
+            padding: 1rem 3rem;
             min-width: 100%;
-            display: block;
-            
+            display: flex;
+            align-items: center;
             
             &:hover{
               background: rgba($color: #000000, $alpha: 0.7);
               color: beige;
             }
+          }
+
+          .icon {
+
+            margin-right: 0.4rem
           }
       }
        
