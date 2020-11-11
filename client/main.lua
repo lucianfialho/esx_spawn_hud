@@ -17,8 +17,28 @@ AddEventHandler('esx:onPlayerSpawn', function()
     
     SetEntityVisible(PlayerPedId(), false, false)
     
+    SetNuiFocus(true, true)
     SendNUIMessage({
         type = 'open',
         locals = config.Coords
     })
+end)
+
+
+RegisterNUICallback("playerSelectLocal", function(data, callback)
+
+    ESX.Game.Teleport(PlayerPedId(), data)
+    DoScreenFadeOut(500)
+    Citizen.Wait(500)
+    
+    FreezeEntityPosition(PlayerPedId(), false)
+    SetEntityVisible(PlayerPedId(), true, false)
+    
+    RenderScriptCams(false, false, 0, true, true)
+    SetCamActive(cam, false)
+    DestroyCam(cam, true)
+    SetNuiFocus(false, false)
+    DoScreenFadeIn(500)
+    callback(true)
+    
 end)
