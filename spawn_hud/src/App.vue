@@ -16,22 +16,7 @@ export default {
   data() {
     return {
       showSpawnHud: true,
-      locals: [{ 
-          "x": 294.50 , 
-          "y": 178.42, 
-          "z": 104.24,
-          "label": 'Vinewood'
-      },{ 
-          "x": 294.50 , 
-          "y": 178.42, 
-          "z": 104.24,
-          "label": 'Vinewood'
-      },{ 
-          "x": 294.50 , 
-          "y": 178.42, 
-          "z": 104.24,
-          "label": 'Vinewood'
-      }]
+      locals: []
     };
   },
   destroyed() {
@@ -43,7 +28,7 @@ export default {
       event => {
         const item = event.data || event.detail;
         
-        if (item.type && item.type == 'open') {
+        if (item.type && item.type === 'open') {
           this.showSpawnHud = true
           this.locals = item.locals
         } 
@@ -52,8 +37,14 @@ export default {
     );
   },
   methods: {
-    playerSpawn (data) {
-      Nui.send()
+    async playerSpawn (local) {
+      const response = await Nui.send('playerSelectLocal', local)
+      const playerSelectLocal = response.json()
+      
+      if(playerSelectLocal) {
+        this.showSpawnHud = false
+        this.locals = []
+      }
     }
   },
 };
