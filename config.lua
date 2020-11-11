@@ -7,5 +7,5 @@ config.Coords.vinewood  = {
     ['z'] = 104.24,
     ['heading'] = 50.2,
     ['label'] = 'Vinewood',
-    ['icon'] = 'user'
+    ['icon'] = 'star'
 }
