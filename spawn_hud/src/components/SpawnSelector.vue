@@ -42,7 +42,7 @@ export default {
 <style lang='scss'>
 .panel {
     color: white;
-    width: 30vw;
+    width: 25vw;
     transform: perspective(1000px) rotateY(10deg);
     box-sizing: border-box;
     margin: 2rem 3rem;

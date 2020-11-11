@@ -16,14 +16,7 @@ export default {
   data() {
     return {
       showSpawnHud: true,
-      locals: [{ 
-        'x': 294.50, 
-        'y': 178.42,
-        'z': 104.24,
-        'heading': 50.2,
-        'label': 'Vinewood',
-        'icon': 'user'
-      }]
+      locals: []
     };
   },
   destroyed() {
