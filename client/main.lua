@@ -17,12 +17,19 @@ AddEventHandler('esx:onPlayerSpawn', function()
     
     SetEntityVisible(PlayerPedId(), false, false)
     
-    SetNuiFocus(true, true)
-    SendNUIMessage({
-        type = 'open',
-        locals = config.Coords
-    })
+    Citizen.CreateThread( function()
+        while GetIsLoadingScreenActive() do
+            Citizen.Wait(0)
+        end
+        SetNuiFocus(true, true)
+        SendNUIMessage({
+            type = 'open',
+            locals = config.Coords
+        })
+    end)
+    
 end)
+
 
 
 RegisterNUICallback("playerSelectLocal", function(data, callback)

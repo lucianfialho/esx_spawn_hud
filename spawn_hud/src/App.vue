@@ -15,7 +15,7 @@ export default {
   },
   data() {
     return {
-      showSpawnHud: true,
+      showSpawnHud: false,
       locals: []
     };
   },
